@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://192.168.0.247/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://192.168.0.247/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://192.168.0.247/">
+      <s:element name="UpdateTeetimeMethod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="teetimeDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTeetimeMethodResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAppointmentMethod">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAppointmentMethodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppointmentMethodResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateTeetimeMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTeetimeMethod" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTeetimeMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTeetimeMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppointmentMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppointmentMethod" />
+  </wsdl:message>
+  <wsdl:message name="GetAppointmentMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppointmentMethodResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceClientSoap">
+    <wsdl:operation name="UpdateTeetimeMethod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传Teetime接口</wsdl:documentation>
+      <wsdl:input message="tns:UpdateTeetimeMethodSoapIn" />
+      <wsdl:output message="tns:UpdateTeetimeMethodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentMethod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取预订时间接口</wsdl:documentation>
+      <wsdl:input message="tns:GetAppointmentMethodSoapIn" />
+      <wsdl:output message="tns:GetAppointmentMethodSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceClientSoap" type="tns:ServiceClientSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateTeetimeMethod">
+      <soap:operation soapAction="http://192.168.0.247/UpdateTeetimeMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentMethod">
+      <soap:operation soapAction="http://192.168.0.247/GetAppointmentMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceClientSoap12" type="tns:ServiceClientSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateTeetimeMethod">
+      <soap12:operation soapAction="http://192.168.0.247/UpdateTeetimeMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppointmentMethod">
+      <soap12:operation soapAction="http://192.168.0.247/GetAppointmentMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceClient">
+    <wsdl:port name="ServiceClientSoap" binding="tns:ServiceClientSoap">
+      <soap:address location="http://112.124.39.196:8090/ServiceClient.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceClientSoap12" binding="tns:ServiceClientSoap12">
+      <soap12:address location="http://112.124.39.196:8090/ServiceClient.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
