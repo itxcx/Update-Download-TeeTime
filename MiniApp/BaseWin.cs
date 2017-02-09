@@ -19,9 +19,11 @@ namespace MiniApp
 
         private void BaseWin_Load(object sender, EventArgs e)
         {
+            //提交TeeTime线程
             var getTeeTimeThread = new Thread(GetTeeTimeMethod) {IsBackground = true};
             getTeeTimeThread.Start();
-            var writeInOrder = new Thread(WriteInOrder) {IsBackground = true};
+            //获取订单线程
+            var writeInOrder = new Thread(WriteInOrder) { IsBackground = true };
             writeInOrder.Start();
         }
 
